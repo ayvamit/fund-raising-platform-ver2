@@ -1,0 +1,357 @@
+funder
+-Home
+-Payment Detail
+-Fund a FundRaiser
+-View my funding
+-Category Report
+
+
+fund raiser
+-Home
+-Bank Detail
+-Request Fund
+-View Requested Fund
+-Category Report
+
+
+common pages: 
+  -afterlogin.php
+  -profile.php
+
+pages Under User
+Funder:
+  -carddetail.php
+  -deletecard.php
+  -categoryview.php
+  -requestview.php
+
+
+FundRaiser:
+  -bankdetail.php
+  -viewrequest.php
+  -requestfund.php
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php 
+$type=$_SESSION['type'];
+if($type==1){
+echo "<p><a href='addbank.php'>Bank Details (Add/View)</a></p>
+<p><a href='requestfund.php'>Request Fund</a></p>
+<p><a href='viewrequest.php'>View Requested Funds</a></p>";
+}
+
+else{
+	echo "<p><a href='addpayment.php'>Payment Details (Add/View)</a></p>
+<p><a href='raisefund.php'>Fund a FundRaiser</a></p>
+<p><a href='viewraised.php'>View my Fundings</a></p>";
+
+}
+
+
+-------------------------------------------------------
+Database Table Name - Request
+Column  -id
+		-name
+		-amount
+		-category
+		-image
+		-desc
+		-email(fetch from register table)
+Fund Raiser Request Form Details Need
+-Category-Select
+-Name- input 
+-Amount- input
+-Image- imagetag
+-Description- textbox
+
+------------------------------------------------------
+
+
+
+"""
+    $query2= "SELECT card,cvv FROM carddetail WHERE name='$namecard' and card='$card' and exp='$exp'";    
+    $result2 = mysqli_query($con, $query2);
+    if (mysqli_num_rows($result2) > 0) {
+      $query3 = mysqli_query($con,"SELECT cvv FROM carddetail WHERE name='$namecard'");
+      $r = mysqli_fetch_array($query3);
+      $checkcvv = $r['cvv']; 
+      if ($checkcvv!=$cvv)
+      {
+        echo "<br><br><br><div class='form'><h3>CVV Incorrect!! </h3><br/>Click here to <a href='carddetail.php'>Try Again!!</a></div>";
+      }
+    }
+    else{
+          goto a;  
+    } 
+"""
+
+
+
+
+--------------------------------------------------------------------
+code of new template
+<?php
+require('include/db.php');
+include("include/auth.php");  ?>
+
+<?php include "include/header.php";   ?>
+
+      <!-- Start Header Area -->
+<?php include "include/navigation.php"; ?>
+      <!-- End Header Area -->
+<br><br><br>
+<head>
+<!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+  <link href="lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/venobox/venobox.css" rel="stylesheet">
+
+  <!-- Nivo Slider Theme -->
+  <link href="css/nivo-slider-theme.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Responsive Stylesheet File -->
+  <link href="css/responsive.css" rel="stylesheet">
+</head>
+<!-- <section class="project-area section-gap" id="project">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 pb-80 header-text">
+        <h1>Waiting for Help</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> labore  et dolore magna aliqua.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 project-wrap">
+        <div class="single-project">
+          <div class="content">
+              <a href="#" target="_blank">
+                <div class="content-overlay"></div>
+                 <img class="content-image img-fluid d-block mx-auto" src="img/p1.jpg" alt="">
+                  <div class="content-details fadeIn-bottom">
+                    <a href="#" class="head-btn btn text-uppercase">Donate Now</a>
+                  </div>
+              </a>
+           </div>
+        </div>
+        <div class="details">
+          <a href="#"><h2>Easy Flight Search</h2></a>
+            <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.</p>
+            <a class="text-uppercase" href="#">read more</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>  
+// <?php
+ //    if( mysqli_num_rows( $result )==0 ){
+   //     echo '<tr><td colspan="6">No Rows Returned</td></tr>';
+     // }else{
+       // while( $row = mysqli_fetch_assoc( $result ) ){
+         // echo "<tr><td>{$row['cat']}</td><td>{$row['title']}</td><td>{$row['description']}</td><td>{$row['amount']}</td></tr>\n";
+ //       }
+//      }
+//?>  
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+ -->
+
+ <div id="portfolio" class="portfolio-area area-padding fix">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline text-center">
+            <h2>Our Portfolio</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Start Portfolio -page -->
+        <div class="awesome-project-1 fix">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="awesome-menu ">
+              <ul class="project-menu">
+                <li>
+                  <a href="#" class="active" data-filter="*">All</a>
+                </li>
+                <li>
+                  <a href="#" data-filter=".development">Development</a>
+                </li>
+                <li>
+                  <a href="#" data-filter=".design">Design</a>
+                </li>
+                <li>
+                  <a href="#" data-filter=".photo">Photoshop</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="awesome-project-content">
+          <!-- single-awesome-project start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 design development">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="img/portfolio/1.jpg" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="venobox" data-gall="myGallery" href="img/portfolio/1.jpg">
+                      <h4>Business City</h4>
+                      <span>Web Development</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- single-awesome-project end -->
+          <!-- single-awesome-project start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 photo">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="img/portfolio/2.jpg" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="venobox" data-gall="myGallery" href="img/portfolio/2.jpg">
+                      <h4>Blue Sea</h4>
+                      <span>Photosho</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- single-awesome-project end -->
+          <!-- single-awesome-project start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 design">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="img/portfolio/3.jpg" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="venobox" data-gall="myGallery" href="img/portfolio/3.jpg">
+                      <h4>Beautiful Nature</h4>
+                      <span>Web Design</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- single-awesome-project end -->
+          <!-- single-awesome-project start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 photo development">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="img/portfolio/4.jpg" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="venobox" data-gall="myGallery" href="img/portfolio/4.jpg">
+                      <h4>Creative Team</h4>
+                      <span>Web design</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- single-awesome-project end -->
+          <!-- single-awesome-project start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 development">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="img/portfolio/5.jpg" alt="" /></a>
+                <div class="add-actions text-center text-center">
+                  <div class="project-dec">
+                    <a class="venobox" data-gall="myGallery" href="img/portfolio/5.jpg">
+                      <h4>Beautiful Flower</h4>
+                      <span>Web Development</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- single-awesome-project end -->
+          <!-- single-awesome-project start -->
+          <div class="col-md-4 col-sm-4 col-xs-12 design photo">
+            <div class="single-awesome-project">
+              <div class="awesome-img">
+                <a href="#"><img src="img/portfolio/6.jpg" alt="" /></a>
+                <div class="add-actions text-center">
+                  <div class="project-dec">
+                    <a class="venobox" data-gall="myGallery" href="img/portfolio/6.jpg">
+                      <h4>Night Hill</h4>
+                      <span>Photoshop</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- single-awesome-project end -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/venobox/venobox.min.js"></script>
+  <script src="lib/knob/jquery.knob.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/parallax/parallax.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+  <script src="lib/appear/jquery.appear.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <script src="js/mainn.js"></script>
+
+
+
+  ----------------------------------------------------------------------------------------------------
